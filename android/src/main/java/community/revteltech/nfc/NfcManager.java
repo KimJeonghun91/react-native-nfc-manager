@@ -204,6 +204,7 @@ class NfcManager extends ReactContextBaseJavaModule implements ActivityEventList
             if (techRequest != null) {
                 try {
                     Ndef ndef = Ndef.get(techRequest.getTagHandle());
+                    ndef.connect();
                     WritableMap parsed = ndef2React(null, new NdefMessage[] { ndef.getNdefMessage() });
                     callback.invoke(null, parsed);
                 } catch (Exception ex) {
